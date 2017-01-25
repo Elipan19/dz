@@ -1,0 +1,27 @@
+#include <ctime> 
+#include <iostream> 
+#include <cstdlib> 
+using namespace std; 
+int main(int argc, char* argv[]) 
+{ 
+int n; 
+int d; 
+n=4; 
+int mas[n]; 
+for ( int i = 0; i < n; i++ ) 
+cin » mas[i]; 
+for (int i=0; i<n; i++) 
+{ 
+d=0; 
+for ( int a=1; a<=mas[i]; a++) 
+{ 
+if (mas[i]%a==0) 
+d = d + 1; 
+} 
+if (d==4) 
+{ 
+cout « "massiv"«mas[i]; 
+} 
+} 
+return 0; 
+}
