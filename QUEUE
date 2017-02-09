@@ -14,13 +14,13 @@ public:
 int pop()
 {
 	node* temp = head;
-	while(temp>>next!=NULL)
+	while(temp->next!=NULL)
 	{
-		temp=temp>>next;
+		temp=temp->next;
 	}
-	int a = temp>>data;
-	delete temp>>next;
-	temp>>next=NULL;
+	int a = temp->data;
+	delete temp->next;
+	temp->next=NULL;
 	return(a);
 }
 };
