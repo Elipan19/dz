@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <iterator>
+using namespace std;
+ 
+int main()
+{
+    int arraySize = 0;
+    cout << "Введите размер массива: ";
+    cin >> arraySize;
+    vector<int> array(arraySize);
+ 
+    cout << "Введите элементы массива: ";
+    for(int i = 0; i < array.size(); i++) {
+        cin >> array[i];
+    }
+ 
+    cout << "\nВведенный массив: ";
+    if (!array.empty()) {
+        copy( array.begin(), array.end(), ostream_iterator<int>(cout," ") );
+    }
+    cout << "\nКоличество элементов массива: " << array.size();
+ 
+    vector<int> array2 = array;
+    cout << "\nЭлементы второго массива (скопированы из первого): ";
+    copy( array2.begin(), array2.end(), ostream_iterator<int>(cout," ") );
+ 
+    cout << "\nПервый элемент массива array2: " << array2.front() << endl;
+    cout << "Последний элемент массива array2: " << array2.back() << endl;
+ 
+    array.clear();
+    array2.push_back(-11);
+ 
+    cout << "Массив array2 с новым последним элементом: ";
+    copy( array2.begin(), array2.end(), ostream_iterator<int>(cout," ") );
+    return 0;
+}
