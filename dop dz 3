@@ -1,0 +1,45 @@
+#include <iostream> 
+using namespace std; 
+void sq(int* p_darr, int a, int i1, int j1) 
+{ 
+int i, j, m, n; 
+if (a % 2 == 0) m = a/2; 
+else m = a/2+1; 
+n = 0; 
+while (n < m) 
+{
+    for (i = i1 + n; i < i1 + a - n; i++) 
+    {
+        for (j = j1 + n; j < j1 + a - n; j++)
+        {
+            *(p_darr + i*2*a + j) = (*(p_darr + i*2*a + j))+1;} 
+        }
+        n = n + 1; 
+    } 
+} 
+int main()
+{ 
+    int i, j, a;
+    cout << "Vvedite razmer massiva N: ";
+    cin >> a;
+    int *p_darr = new int[4*a*a*sizeof(int)];
+    for (i = 0; i < 2*a; i++)
+    {
+        for (j = 0; j < 2*a; j++)
+        {
+            *(p_darr + i*2*a + j) = 0; 
+        } 
+    }
+    sq(p_darr,a,0,0);
+    sq(p_darr,a,0,a); 
+    sq(p_darr,a,a,0); 
+    sq(p_darr,a,a,a); 
+    for (i = 0; i < 2*a; i++) 
+    {
+        for (j = 0; j < 2*a; j++)
+        {
+            cout << *(p_darr + i*2*a + j) << " "; 
+        } 
+    cout << endl; 
+    } 
+}
