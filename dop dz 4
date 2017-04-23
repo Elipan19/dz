@@ -1,0 +1,54 @@
+#include <iostream> 
+#include <cstring> 
+using namespace std; 
+
+int bubble(int* massiv, int razmer) 
+{ 
+    int a, b, n; 
+    for (a = 1; a< razmer; ++a) 
+    for (b = razmer-1; b >= a; --b) 
+    {
+        if (massiv [b-1] > massiv [b])
+        { 
+        n = massiv[b-1]; 
+        massiv[b-1] = massiv[b]; 
+        massiv[b] = n; 
+        } 
+    } 
+    return massiv[(razmer-1)/2]; 
+} 
+
+int srednee(int* massiv, int razmer) 
+{
+    int i, sum; 
+    sum = 0; 
+    for (i = 0; i < razmer; i++)
+    {
+        sum = sum + massiv[i]; 
+    } 
+    return sum/razmer; 
+}
+
+int main() 
+{
+    int num; 
+    int bubble(int* massiv, int razmer); 
+    int srednee(int* massiv, int razmer); 
+    cout << "Vvedite razmer massiva: "; 
+    cin >> num; 
+    int *p_darr = new int[num]; 
+    for (int i = 0; i < num; i++) 
+    {
+        int m; 
+        cin >> m; 
+        p_darr[i] = m; 
+        cout << "Pod nomerom " << i << " Element " << p_darr[i] << endl; 
+
+    } 
+
+    cout << " Mediana: " << bubble(p_darr,num); 
+    cout << "\n Srednee arifmeticheskoe: " << srednee(p_darr,num); 
+    cout << "\n Raznitsa mezdy medianoi and srednim arifmeticheskim: " << bubble(p_darr,num)-srednee(p_darr,num); 
+    delete [] p_darr;
+    return 0; 
+} 
