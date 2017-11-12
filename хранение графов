@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+void matrix_incd(int* A, int* B, int n, int m){
+	int** C = new int*[m];
+	for(int i = 1; i <= m; i++)
+	  C[i] = new int[n];
+	for(int l = 1; l <= m; l++)
+	  for(int i = 0; i < n; i++)
+	    if(A[i] == l || B[i] == l)
+	      C[l][i] = 1;
+	for(int i = 1; i <= m; i++){
+	  for(int l = 0; l < n; l++)
+	    cout << C[i][l] << " ";
+	  cout << endl;
+	}
+}
+void matrix_smew(int* A, int* B, int n, int m){
+	int** C = new int*[m];
+	for(int i = 1; i <= m; i++)
+	  C[i] = new int[m];
+	for(int l = 1; l <= m; l++)
+	  for(int i = 0; i < n; i++)
+	    if(A[i] == l)
+	      C[l][B[i]] = 1;
+	for(int l = 1; l <= m; l++)
+	  for(int i = 0; i < n; i++)
+	    if(B[i] == l)
+	      C[l][A[i]] = 1;
+  for(int i = 1; i <= m; i++){
+	  for(int l = 1; l <= m; l++)
+	    cout << C[i][l] << " ";
+	  cout << endl;
+	}
+}
+void spisok_smew(int* A, int* B, int n, int m){
+	for(int t = 1; t <= m; t++){
+		cout << t << ":" << " ";
+	  for(int i = 0; i < n; i++){
+	    if(A[i] == t)
+	      cout << B[i] << " ";
+	    if(B[i] == t)
+	      cout << A[i] << " ";
+	  }
+	  cout << endl;
+	}
+}
+int main(){ 
+	int n, max = 0;
+	cin >> n;
+	int* A = new int(n);
+	int* B = new int(n);
+  for(int i = 0; i < n; i++)
+    cin >> A[i] >> B[i];
+  for(int i = 0; i < n; i++){
+    if(max < A[i])
+      max = A[i];
+    if(max < B[i])
+      max = B[i];
+  }
+  spisok_smew(A, B, n, max);
+  cout << endl;
+  matrix_smew(A, B, n, max);
+  cout << endl;
+  matrix_incd(A, B, n, max);
+  return 0;
+}
